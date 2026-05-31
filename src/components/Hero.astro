@@ -1,0 +1,298 @@
+---
+const stats = [
+  { value: "10", suffix: "K+", label: "Active users" },
+  { value: "98", suffix: "%", label: "Satisfaction rate" },
+  { value: "3", suffix: "x", label: "Faster workflow" },
+  { value: "24", suffix: "/7", label: "Support" },
+];
+---
+
+<section
+  id="hero"
+  style="
+    min-height: 100vh;
+    background: #f5f0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  "
+>
+
+  <!-- Partículas flotantes -->
+  <div id="particles" style="position:absolute;inset:0;pointer-events:none;z-index:0;">
+    {Array.from({length: 12}).map((_, i) => (
+      <div class={`particle particle-${i}`} style={`
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(99,102,241,${0.06 + (i % 4) * 0.03});
+        width: ${16 + (i % 5) * 12}px;
+        height: ${16 + (i % 5) * 12}px;
+        top: ${10 + (i * 7) % 80}%;
+        left: ${5 + (i * 9) % 90}%;
+      `}></div>
+    ))}
+  </div>
+
+  <!-- Ondas SVG animadas fondo -->
+  <svg id="hero-waves" style="position:absolute;bottom:0;left:0;width:100%;pointer-events:none;z-index:0;" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave1" fill="rgba(139,92,246,0.12)" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,181.3C960,192,1056,192,1152,176C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+    <path id="wave2" fill="rgba(99,102,241,0.08)" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,208C672,213,768,203,864,186.7C960,171,1056,149,1152,154.7C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+    <path id="wave3" fill="rgba(167,139,250,0.15)" d="M0,256L48,261.3C96,267,192,277,288,272C384,267,480,245,576,240C672,235,768,245,864,250.7C960,256,1056,256,1152,245.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+  </svg>
+
+  <!-- Círculo decorativo top left -->
+  <div id="circle1" style="
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  "></div>
+
+  <!-- Círculo decorativo top right -->
+  <div id="circle2" style="
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  "></div>
+
+  <!-- Contenido -->
+  <div style="
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  ">
+
+    <!-- Badge -->
+    <div id="hero-badge" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 32px;
+    ">
+      <span style="
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #6366f1;
+        display: inline-block;
+        animation: pulse 2s infinite;
+      "></span>
+      <span style="font-size: 13px; font-weight: 500; color: #6366f1;">
+        Trusted by 10,000+ teams worldwide
+      </span>
+    </div>
+
+    <!-- Título -->
+    <h1 id="hero-title" style="
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      color: #0F0F0F;
+      margin-bottom: 24px;
+    ">
+      The smarter way<br/>
+      to <span style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">streamline</span> work
+    </h1>
+
+    <!-- Subtítulo -->
+    <p id="hero-sub" style="
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 400;
+      color: #555;
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto 40px;
+    ">
+      Automate your workflow, eliminate busywork, and help your team focus on what actually moves the needle.
+    </p>
+
+    <!-- CTAs -->
+    <div id="hero-ctas" style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    ">
+      <a
+        href="#"
+        style="
+          font-size: 15px;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: #6366f1;
+          padding: 14px 28px;
+          border-radius: 12px;
+          text-decoration: none;
+          transition: all 0.2s;
+        "
+        onmouseover="this.style.backgroundColor='#4f46e5'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(99,102,241,0.4)'"
+        onmouseout="this.style.backgroundColor='#6366f1'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+      >
+        Get started free
+      </a>
+      <a
+        href="#"
+        style="
+          font-size: 15px;
+          font-weight: 600;
+          color: #6366f1;
+          background-color: rgba(255,255,255,0.8);
+          padding: 14px 28px;
+          border-radius: 12px;
+          border: 1.5px solid rgba(99,102,241,0.3);
+          text-decoration: none;
+          transition: all 0.2s;
+        "
+        onmouseover="this.style.backgroundColor='#ffffff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'"
+        onmouseout="this.style.backgroundColor='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+      >
+        See live demo →
+      </a>
+    </div>
+
+    <!-- Stats — sin card, con divisores -->
+    <div id="hero-stats" style="
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    ">
+      {stats.map((stat, i) => (
+        <div style={`
+          text-align: center;
+          padding: 0 16px;
+          ${i < stats.length - 1 ? 'border-right: 1px solid rgba(99,102,241,0.15);' : ''}
+        `}>
+          <div style="
+            font-family: 'Sora', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #0F0F0F;
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+          ">
+            <span class="counter" data-target={stat.value}>0</span>{stat.suffix}
+          </div>
+          <div style="font-size: 13px; font-weight: 500; color: #888;">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  // Entrada del contenido
+  const tl = gsap.timeline({ delay: 0.5 });
+
+  tl.from("#hero-badge", {
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    ease: "power3.out",
+  })
+  .from("#hero-title", {
+    opacity: 0,
+    y: 30,
+    duration: 0.7,
+    ease: "power3.out",
+  }, "-=0.3")
+  .from("#hero-sub", {
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    ease: "power3.out",
+  }, "-=0.4")
+  .from("#hero-ctas", {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    ease: "power3.out",
+  }, "-=0.3")
+  .from("#hero-stats", {
+    opacity: 0,
+    y: 24,
+    duration: 0.6,
+    ease: "power3.out",
+    onComplete: () => {
+      // Counter animado al aparecer
+      document.querySelectorAll(".counter").forEach((el) => {
+        const target = parseInt(el.getAttribute("data-target") || "0");
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 1.8,
+          ease: "power2.out",
+          onUpdate: function() {
+            el.textContent = Math.round(this.targets()[0].val).toString();
+          }
+        });
+      });
+    }
+  }, "-=0.2");
+
+  // Ondas animadas
+  gsap.to("#wave1", {
+    attr: { d: "M0,180L48,160C96,140,192,180,288,186.7C384,192,480,170,576,165C672,160,768,181,864,192C960,203,1056,181,1152,165C1248,149,1344,138,1392,122L1440,106L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" },
+    duration: 6, ease: "sine.inOut", repeat: -1, yoyo: true,
+  });
+  gsap.to("#wave2", {
+    attr: { d: "M0,200L48,192C96,181,192,192,288,197C384,203,480,213,576,218C672,224,768,213,864,197C960,181,1056,160,1152,165C1248,171,1344,203,1392,218L1440,234L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" },
+    duration: 8, ease: "sine.inOut", repeat: -1, yoyo: true, delay: 1,
+  });
+  gsap.to("#wave3", {
+    attr: { d: "M0,270L48,256C96,245,192,256,288,261C384,267,480,256,576,245C672,235,768,256,864,261C960,267,1056,245,1152,234C1248,224,1344,224,1392,213L1440,203L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" },
+    duration: 7, ease: "sine.inOut", repeat: -1, yoyo: true, delay: 0.5,
+  });
+
+  // Círculos flotando
+  gsap.to("#circle1", { y: -20, x: 10, duration: 5, ease: "sine.inOut", repeat: -1, yoyo: true });
+  gsap.to("#circle2", { y: 15, x: -10, duration: 6, ease: "sine.inOut", repeat: -1, yoyo: true, delay: 1 });
+
+  // Partículas flotando
+  document.querySelectorAll(".particle").forEach((el, i) => {
+    gsap.to(el, {
+      y: -15 - (i % 3) * 10,
+      x: (i % 2 === 0 ? 1 : -1) * (8 + i % 5 * 4),
+      duration: 3 + (i % 4),
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      delay: i * 0.3,
+    });
+  });
+</script>

@@ -1,0 +1,195 @@
+---
+const links = [
+  { label: "Features", href: "#features" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Pricing", href: "#pricing" },
+];
+---
+
+<header
+  id="navbar"
+  style="
+    position: fixed;
+    top: 24px;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 0 40px;
+  "
+>
+  <nav
+    style="
+      max-width: 1024px;
+      margin: 0 auto;
+      border-radius: 16px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+    "
+  >
+    <!-- Logo -->
+    <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;">
+      <svg width="34" height="34" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="8" fill="#6366f1"/>
+        <path d="M8 14L12 18L20 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-size: 17px; font-weight: 700; letter-spacing: -0.3px; color: #0F0F0F; font-family: 'Sora', sans-serif;">
+        Stream<span style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Line</span>
+      </span>
+    </a>
+
+    <!-- Links desktop -->
+    <ul id="nav-links" style="display: flex; align-items: center; gap: 36px; list-style: none; margin: 0; padding: 0;">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            style="font-size: 14px; font-weight: 500; color: #555; text-decoration: none; transition: color 0.2s;"
+            onmouseover="this.style.color='#0F0F0F'"
+            onmouseout="this.style.color='#555'"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <a
+        href="#"
+        style="font-size: 14px; font-weight: 500; color: #555; text-decoration: none;"
+        onmouseover="this.style.color='#0F0F0F'"
+        onmouseout="this.style.color='#555'"
+      >
+        Log in
+      </a>
+      <a
+        href="#"
+       style="
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #6366f1;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+"
+onmouseover="this.style.backgroundColor='#4f46e5'"
+onmouseout="this.style.backgroundColor='#6366f1'"
+      >
+        Get started
+      </a>
+    </div>
+
+    <!-- Hamburger mobile -->
+    <button
+      id="menu-btn"
+      style="display: none; flex-direction: column; gap: 5px; padding: 8px; background: none; border: none; cursor: pointer;"
+      aria-label="Menu"
+    >
+      <span id="bar1" style="display: block; width: 22px; height: 2px; background-color: #0F0F0F; border-radius: 4px;"></span>
+      <span id="bar2" style="display: block; width: 22px; height: 2px; background-color: #0F0F0F; border-radius: 4px;"></span>
+      <span id="bar3" style="display: block; width: 22px; height: 2px; background-color: #0F0F0F; border-radius: 4px;"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    style="
+      display: none;
+      margin-top: 8px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+    "
+  >
+    <div style="display: flex; flex-direction: column; padding: 20px 24px; gap: 16px;">
+      {links.map((link) => (
+        <a href={link.href} style="font-size: 14px; font-weight: 500; color: #555; text-decoration: none;">
+          {link.label}
+        </a>
+      ))}
+      <div style="height: 1px; background-color: #f0f0f0;"></div>
+      <a href="#" style="font-size: 14px; font-weight: 500; color: #555; text-decoration: none;">Log in</a>
+      <a href="#" style="font-size: 14px; font-weight: 600; color: #ffffff; background-color: #6366f1; padding: 12px 20px; border-radius: 12px; text-align: center; text-decoration: none;">
+        Get started
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { gsap } from "gsap";
+
+  gsap.from("#navbar", {
+    y: -80,
+    opacity: 0,
+    duration: 0.8,
+    ease: "power3.out",
+    delay: 0.2,
+  });
+
+  // Responsive: mostrar hamburger en mobile
+  const navLinks = document.getElementById("nav-links");
+  const cta = document.querySelector("#navbar nav > div") as HTMLElement;
+  const menuBtn = document.getElementById("menu-btn") as HTMLElement;
+
+  function handleResize() {
+    if (window.innerWidth < 768) {
+      navLinks!.style.display = "none";
+      cta!.style.display = "none";
+      menuBtn!.style.display = "flex";
+    } else {
+      navLinks!.style.display = "flex";
+      cta!.style.display = "flex";
+      menuBtn!.style.display = "none";
+      document.getElementById("mobile-menu")!.style.display = "none";
+    }
+  }
+
+  handleResize();
+  window.addEventListener("resize", handleResize);
+
+  // Hamburger toggle
+  let open = false;
+  const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
+
+  menuBtn?.addEventListener("click", () => {
+    open = !open;
+    mobileMenu.style.display = open ? "block" : "none";
+
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
+
+    if (open) {
+      gsap.to(bar1, { rotate: 45, y: 7, duration: 0.3 });
+      gsap.to(bar2, { opacity: 0, duration: 0.2 });
+      gsap.to(bar3, { rotate: -45, y: -7, duration: 0.3 });
+    } else {
+      gsap.to(bar1, { rotate: 0, y: 0, duration: 0.3 });
+      gsap.to(bar2, { opacity: 1, duration: 0.2 });
+      gsap.to(bar3, { rotate: 0, y: 0, duration: 0.3 });
+    }
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      open = false;
+      mobileMenu.style.display = "none";
+    });
+  });
+</script>
