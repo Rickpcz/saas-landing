@@ -1,0 +1,254 @@
+---
+const features = [
+  {
+    tag: "Automation",
+    title: "Automate the boring stuff",
+    description: "Set up workflows once and let StreamLine handle the repetitive tasks. From notifications to data sync — it just works.",
+    bullets: ["No-code workflow builder", "500+ app integrations", "Conditional logic & branching"],
+    accent: "#6366f1",
+    bg: "#f5f0ff",
+  },
+  {
+    tag: "Collaboration",
+    title: "Your team, always in sync",
+    description: "Real-time collaboration tools that keep everyone on the same page — whether they're across the desk or across the world.",
+    bullets: ["Live presence & cursors", "Threaded comments", "Role-based permissions"],
+    accent: "#8b5cf6",
+    bg: "#faf5ff",
+  },
+  {
+    tag: "Analytics",
+    title: "Data that actually makes sense",
+    description: "Beautiful dashboards that surface the metrics that matter. No more digging through spreadsheets.",
+    bullets: ["Custom dashboards", "Automated reports", "Goal tracking & forecasts"],
+    accent: "#a78bfa",
+    bg: "#f3f0ff",
+  },
+];
+---
+
+<section
+  id="features"
+  style="
+    background: #ffffff;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+  "
+>
+  <!-- Section header -->
+  <div class="features-header" style="
+    max-width: 600px;
+    margin: 0 auto 80px;
+    text-align: center;
+  ">
+    <div style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.08);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+    ">
+      <span style="font-size: 13px; font-weight: 500; color: #6366f1;">Everything you need</span>
+    </div>
+    <h2 style="
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #0F0F0F;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    ">
+      Built for how modern<br/>teams <span style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">actually work</span>
+    </h2>
+    <p style="font-size: 17px; color: #666; line-height: 1.7;">
+      Every feature is designed to reduce friction and help your team move faster.
+    </p>
+  </div>
+
+  <!-- Features list -->
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px;">
+    {features.map((feature, i) => (
+      <div
+        class="feature-row"
+        style={`
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 48px;
+          align-items: center;
+          direction: ${i % 2 === 0 ? 'ltr' : 'rtl'};
+        `}
+      >
+        <!-- Visual bento -->
+        <div style={`
+          direction: ltr;
+          background: ${feature.bg};
+          border-radius: 24px;
+          padding: 40px;
+          min-height: 320px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          border: 1px solid rgba(99,102,241,0.08);
+        `}>
+          <!-- Decoración interna -->
+          <div style={`
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, ${feature.accent}22 0%, transparent 70%);
+          `}></div>
+
+          <!-- Mock UI -->
+          <div style="width: 100%; direction: ltr;">
+            <div style={`
+              background: white;
+              border-radius: 16px;
+              padding: 20px;
+              box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+              border: 1px solid rgba(255,255,255,0.8);
+            `}>
+              <!-- Header mock -->
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                <div style={`width: 32px; height: 32px; border-radius: 8px; background: ${feature.accent};`}></div>
+                <div>
+                  <div style={`width: 120px; height: 8px; border-radius: 4px; background: ${feature.accent}33; margin-bottom: 6px;`}></div>
+                  <div style="width: 80px; height: 6px; border-radius: 4px; background: #f0f0f0;"></div>
+                </div>
+              </div>
+              <!-- Bars mock -->
+              {[80, 55, 90, 45, 70].map((w) => (
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                  <div style="width: 24px; height: 6px; border-radius: 4px; background: #f0f0f0; flex-shrink: 0;"></div>
+                  <div style={`height: 6px; border-radius: 4px; background: ${feature.accent}44; width: ${w}%;`}></div>
+                </div>
+              ))}
+              <!-- Bottom tag -->
+              <div style={`
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                margin-top: 8px;
+                background: ${feature.accent}11;
+                border: 1px solid ${feature.accent}33;
+                border-radius: 100px;
+                padding: 4px 12px;
+              `}>
+                <div style={`width: 6px; height: 6px; border-radius: 50%; background: ${feature.accent};`}></div>
+                <span style={`font-size: 11px; font-weight: 600; color: ${feature.accent};`}>{feature.tag}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div style="direction: ltr;">
+          <div style={`
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: ${feature.accent}11;
+            border: 1px solid ${feature.accent}33;
+            border-radius: 100px;
+            padding: 4px 14px;
+            margin-bottom: 20px;
+          `}>
+            <span style={`font-size: 12px; font-weight: 600; color: ${feature.accent};`}>{feature.tag}</span>
+          </div>
+
+          <h3 style="
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #0F0F0F;
+            line-height: 1.2;
+            margin-bottom: 16px;
+          ">
+            {feature.title}
+          </h3>
+
+          <p style="font-size: 16px; color: #666; line-height: 1.7; margin-bottom: 24px;">
+            {feature.description}
+          </p>
+
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            {feature.bullets.map((bullet) => (
+              <li style="display: flex; align-items: center; gap: 10px;">
+                <div style={`
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  background: ${feature.accent}15;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                `}>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <path d="M2 5L4 7L8 3" stroke={feature.accent} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <span style="font-size: 14px; font-weight: 500; color: #444;">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .feature-row {
+      grid-template-columns: 1fr !important;
+      direction: ltr !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Header entrada
+  gsap.from(".features-header", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".features-header",
+      start: "top 85%",
+    }
+  });
+
+  // Cada row entra escalonada
+  document.querySelectorAll(".feature-row").forEach((row, i) => {
+    const direction = i % 2 === 0 ? -40 : 40;
+
+    gsap.from(row, {
+      opacity: 0,
+      x: direction,
+      y: 30,
+      duration: 0.9,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: row,
+        start: "top 82%",
+      },
+      delay: 0.1,
+    });
+  });
+</script>

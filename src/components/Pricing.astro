@@ -1,0 +1,347 @@
+---
+const plans = [
+  {
+    name: "Free",
+    desc: "Perfect for individuals getting started.",
+    monthly: 0,
+    annual: 0,
+    cta: "Get started free",
+    features: [
+      "Up to 3 projects",
+      "5 automations",
+      "Basic analytics",
+      "Email support",
+      "1 workspace member",
+    ],
+    highlighted: false,
+  },
+  {
+    name: "Pro",
+    desc: "For growing teams that need more power.",
+    monthly: 29,
+    annual: 19,
+    cta: "Start free trial",
+    badge: "Most popular",
+    features: [
+      "Unlimited projects",
+      "500 automations",
+      "Advanced analytics",
+      "Priority support",
+      "Up to 20 members",
+      "Custom integrations",
+      "API access",
+    ],
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    desc: "For large teams with custom needs.",
+    monthly: 99,
+    annual: 79,
+    cta: "Contact sales",
+    features: [
+      "Everything in Pro",
+      "Unlimited automations",
+      "Custom dashboards",
+      "Dedicated support",
+      "Unlimited members",
+      "SSO & SAML",
+      "SLA guarantee",
+      "On-premise option",
+    ],
+    highlighted: false,
+  },
+];
+---
+
+<section
+  id="pricing"
+  style="
+    background: #ffffff;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+  "
+>
+  <div style="
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  "></div>
+
+  <!-- Header -->
+  <div class="pricing-header" style="
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  ">
+    <div style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.08);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+    ">
+      <span style="font-size: 13px; font-weight: 500; color: #6366f1;">Simple pricing</span>
+    </div>
+    <h2 style="
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #0F0F0F;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    ">
+      Pay for what you<br/>
+      <span style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">actually need</span>
+    </h2>
+    <p style="font-size: 17px; color: #666; line-height: 1.7; margin-bottom: 32px;">
+      No hidden fees. Cancel anytime. Start free.
+    </p>
+
+    <!-- Toggle -->
+    <div style="
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f5f5f5;
+      border-radius: 100px;
+      padding: 4px;
+    ">
+      <button id="toggle-monthly" style="
+        padding: 8px 20px;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s;
+        background: #ffffff;
+        color: #0F0F0F;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      ">Monthly</button>
+      <button id="toggle-annual" style="
+        padding: 8px 20px;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s;
+        background: transparent;
+        color: #888;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      ">
+        Annual
+        <span style="
+          background: #dcfce7;
+          color: #16a34a;
+          font-size: 11px;
+          font-weight: 700;
+          padding: 2px 7px;
+          border-radius: 100px;
+        ">-35%</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="pricing-grid" style="
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  ">
+    {plans.map((plan) => (
+      <div
+        class="pricing-card"
+        style={`
+          border-radius: 24px;
+          padding: 36px 32px;
+          position: relative;
+          transition: transform 0.3s, box-shadow 0.3s;
+          ${plan.highlighted
+            ? `background: #6366f1; border: 1px solid #6366f1; box-shadow: 0 24px 64px rgba(99,102,241,0.35);`
+            : `background: #ffffff; border: 1px solid #f0f0f0; box-shadow: 0 4px 24px rgba(0,0,0,0.04);`
+          }
+        `}
+      >
+        <!-- Badge -->
+        {plan.badge && (
+          <div style="
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 100px;
+            white-space: nowrap;
+          ">
+            {plan.badge}
+          </div>
+        )}
+
+        <!-- Plan name -->
+        <div style={`font-size: 13px; font-weight: 600; margin-bottom: 8px; color: ${plan.highlighted ? 'rgba(255,255,255,0.8)' : '#6366f1'};`}>
+          {plan.name}
+        </div>
+
+        <!-- Price -->
+        <div style="display: flex; align-items: baseline; gap: 4px; margin-bottom: 8px;">
+          <span style={`font-family: 'Sora', sans-serif; font-size: 48px; font-weight: 800; letter-spacing: -2px; color: ${plan.highlighted ? '#ffffff' : '#0F0F0F'};`}>
+            {plan.monthly === 0
+              ? 'Free'
+              : <span>$<span class="price-value" data-monthly={plan.monthly} data-annual={plan.annual}>{plan.monthly}</span></span>
+            }
+          </span>
+          {plan.monthly > 0 && (
+            <span style={`font-size: 14px; font-weight: 500; color: ${plan.highlighted ? 'rgba(255,255,255,0.6)' : '#999'};`}>/mo</span>
+          )}
+        </div>
+
+        <p style={`font-size: 14px; line-height: 1.6; margin-bottom: 28px; color: ${plan.highlighted ? 'rgba(255,255,255,0.7)' : '#666'};`}>
+          {plan.desc}
+        </p>
+
+        <!-- CTA -->
+        <a
+          href="#"
+          style={`
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-bottom: 28px;
+            transition: all 0.2s;
+            ${plan.highlighted
+              ? 'background: rgba(255,255,255,0.15); color: #ffffff; border: 1.5px solid rgba(255,255,255,0.3);'
+              : 'background: transparent; color: #0F0F0F; border: 1.5px solid #e5e5e5;'
+            }
+          `}
+          onmouseover={plan.highlighted
+            ? "this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(-1px)'"
+            : "this.style.borderColor='#0F0F0F'; this.style.transform='translateY(-1px)'"}
+          onmouseout={plan.highlighted
+            ? "this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateY(0)'"
+            : "this.style.borderColor='#e5e5e5'; this.style.transform='translateY(0)'"}
+        >
+          {plan.cta}
+        </a>
+
+        <!-- Divider -->
+        <div style={`height: 1px; margin-bottom: 24px; background: ${plan.highlighted ? 'rgba(255,255,255,0.15)' : '#f5f5f5'};`}></div>
+
+        <!-- Features -->
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+          {plan.features.map((f) => (
+            <li style="display: flex; align-items: center; gap: 10px;">
+              <div style={`
+                width: 18px; height: 18px;
+                border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                flex-shrink: 0;
+                background: ${plan.highlighted ? 'rgba(255,255,255,0.2)' : 'rgba(99,102,241,0.08)'};
+              `}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5L4 7L8 3" stroke={plan.highlighted ? "white" : "#6366f1"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span style={`font-size: 13px; font-weight: 500; color: ${plan.highlighted ? 'rgba(255,255,255,0.85)' : '#444'};`}>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  @media (max-width: 900px) {
+    .pricing-grid {
+      grid-template-columns: 1fr !important;
+      max-width: 420px !important;
+    }
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 16px 48px rgba(99,102,241,0.15) !important;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".pricing-header", {
+    opacity: 0, y: 40, duration: 0.8, ease: "power3.out",
+    scrollTrigger: { trigger: ".pricing-header", start: "top 85%" }
+  });
+
+  gsap.from(".pricing-card", {
+    opacity: 0, y: 40, duration: 0.7, ease: "power3.out", stagger: 0.15,
+    scrollTrigger: { trigger: ".pricing-grid", start: "top 85%" }
+  });
+
+  const btnMonthly = document.getElementById("toggle-monthly") as HTMLElement;
+  const btnAnnual = document.getElementById("toggle-annual") as HTMLElement;
+  const prices = document.querySelectorAll(".price-value");
+  let isAnnual = false;
+
+  function setToggle(annual: boolean) {
+    isAnnual = annual;
+
+    btnMonthly.style.background = annual ? "transparent" : "#ffffff";
+    btnMonthly.style.color = annual ? "#888" : "#0F0F0F";
+    btnMonthly.style.boxShadow = annual ? "none" : "0 2px 8px rgba(0,0,0,0.08)";
+
+    btnAnnual.style.background = annual ? "#ffffff" : "transparent";
+    btnAnnual.style.color = annual ? "#0F0F0F" : "#888";
+    btnAnnual.style.boxShadow = annual ? "0 2px 8px rgba(0,0,0,0.08)" : "none";
+
+    prices.forEach(el => {
+      const monthly = parseInt(el.getAttribute("data-monthly") || "0");
+      const annualVal = parseInt(el.getAttribute("data-annual") || "0");
+      const target = isAnnual ? annualVal : monthly;
+      const current = parseInt(el.textContent || "0");
+
+      gsap.to({ val: current }, {
+        val: target,
+        duration: 0.5,
+        ease: "power2.out",
+        onUpdate: function() {
+          el.textContent = Math.round(this.targets()[0].val).toString();
+        }
+      });
+    });
+  }
+
+  btnMonthly.addEventListener("click", () => setToggle(false));
+  btnAnnual.addEventListener("click", () => setToggle(true));
+</script>
