@@ -161,15 +161,15 @@ const plans = [
 
   <!-- Cards -->
   <div class="pricing-grid" style="
-    max-width: 1050px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: start;
-    position: relative;
-    z-index: 1;
-  ">
+  max-width: 1050px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+">
     {plans.map((plan) => (
       <div
         class="pricing-card"
@@ -177,7 +177,7 @@ const plans = [
           border-radius: 24px;
           padding: 36px 32px;
           position: relative;
-          transition: transform 0.3s, box-shadow 0.3s;
+          transition: box-shadow 0.3s;
           ${plan.highlighted
             ? `background: #6366f1; border: 1px solid #6366f1; box-shadow: 0 24px 64px rgba(99,102,241,0.35);`
             : `background: #ffffff; border: 1px solid #f0f0f0; box-shadow: 0 4px 24px rgba(0,0,0,0.04);`
@@ -244,11 +244,11 @@ const plans = [
             }
           `}
           onmouseover={plan.highlighted
-            ? "this.style.background='rgba(255,255,255,0.25)'; this.style.transform='translateY(-1px)'"
-            : "this.style.borderColor='#0F0F0F'; this.style.transform='translateY(-1px)'"}
+            ? "this.style.background='rgba(255,255,255,0.25)'"
+            : "this.style.borderColor='#0F0F0F'"}
           onmouseout={plan.highlighted
-            ? "this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateY(0)'"
-            : "this.style.borderColor='#e5e5e5'; this.style.transform='translateY(0)'"}
+            ? "this.style.background='rgba(255,255,255,0.15)'"
+            : "this.style.borderColor='#e5e5e5'"}
         >
           {plan.cta}
         </a>
@@ -289,8 +289,9 @@ const plans = [
   }
 
   .pricing-card:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 16px 48px rgba(99,102,241,0.15) !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.6),
+                0 0 20px rgba(99, 102, 241, 0.25) !important;
+    transform: none !important;
   }
 </style>
 
